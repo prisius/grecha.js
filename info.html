@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="entry"></div>
+    <script src="./grecha.js"></script>
+    <script>
+
+      const r = router({
+        "/info": () => div(
+          h1("Bar"),
+          p("this is my page"),
+          div(a("Home").att$("href", "#"))
+        )
+      });
+      entry.appendChild(r);
+    </script>
+  </body>
+</html>
