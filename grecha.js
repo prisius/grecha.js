@@ -31,7 +31,9 @@ function tag(name, ...children) {
 }
 
 
-const MUNDANE_TAGS = ["canvas", "h1", "h2", "h3", "p", "a", "div", "span", "select"];
+
+
+const MUNDANE_TAGS = ["canvas", "h1", "h2", "h3", "p", "a", "div", "span", "select", "button"];
 for (let tagName of MUNDANE_TAGS) {
   window[tagName] = (...children) => tag(tagName, ...children);
 }
@@ -40,10 +42,18 @@ function img(src) {
   return tag("img").att$("src", src);
 }
 
-function input(type) {
-  return tag("input").att$("type", type);
-}
 
+function input(type, onChange) {
+  const inputElement = tag("input").att$("type", type);
+
+  if (typeof onChange === "function") {
+    inputElement.oninput = function() {
+      onChange(this.value);
+    };
+  }
+
+  return inputElement;
+}
 
 
 const routes = {};
