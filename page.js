@@ -21,6 +21,7 @@ const r = router({
       div(a("Foo").att$("href", "#/foo")),
       div(a("Bar").att$("href", "#/bar")),
       div(a("Info").att$("href", "#/info")),
+      div(a("About").att$("href", "#/about")),
       counterElement,
     );
   },
@@ -36,9 +37,11 @@ const r = router({
     div(a("Home").att$("href", "#"))
   ),
   "/info": () => infoRoute(),
+  "/about": () => aboutRoute(),
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+
   const entry = document.getElementById("entry");
   entry.appendChild(r);
 });
